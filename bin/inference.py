@@ -30,7 +30,7 @@ from kospeech.models import (
 )
 
 
-def parse_audio(audio_path: str, del_silence: bool = False, audio_extension: str = 'pcm') -> Tensor:
+def parse_audio(audio_path: str, del_silence: bool = False, audio_extension: str = 'wav') -> Tensor:
     signal = load_audio(audio_path, del_silence, extension=audio_extension)
     feature = torchaudio.compliance.kaldi.fbank(
         waveform=Tensor(signal).unsqueeze(0),
@@ -49,8 +49,16 @@ def parse_audio(audio_path: str, del_silence: bool = False, audio_extension: str
 parser = argparse.ArgumentParser(description='KoSpeech')
 parser.add_argument('--model_path', type=str, required=True)
 parser.add_argument('--audio_path', type=str, required=True)
-parser.add_argument('--device', type=str, require=False, default='cpu')
+parser.add_argument('--device', type=str, required=False, default='cpu')
 opt = parser.parse_args()
+
+# import librosa
+# model_path = "C:\STT\kospeech-latest\outputs\2022-10-20\16-36-17\model.pt"
+# device = "cpu"
+# data_souce = "C:\STT_dataset\KsponSpeech_eval\eval_clean\KsponSpeech_E00001.pcm"
+# audiodata = data_souce.encode('utf-8')
+# wav_data = librosa.util.buf_to_float(audiodata)
+
 
 feature = parse_audio(opt.audio_path, del_silence=True)
 input_length = torch.LongTensor([len(feature)])

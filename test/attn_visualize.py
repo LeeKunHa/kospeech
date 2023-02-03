@@ -18,7 +18,8 @@ import librosa
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from kospeech.data.audio.core import split
+
+from bin.kospeech.data.audio.core import split
 from kospeech.models.seq2seq.decoder import Seq2seqDecoder
 
 MODEL_PATH = '../data/checkpoints/model.pt'

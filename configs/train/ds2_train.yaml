@@ -6,13 +6,13 @@ output_unit: 'character'
 
 # trainer
 num_epochs: 70
-batch_size: 32
-save_result_every: 1000
-checkpoint_every: 5000
+batch_size: 64
+save_result_every: 100
+checkpoint_every: 77500
 print_every: 10
 mode: 'train'
 seed: 777
-resume: false
+resume: False
 
 # device
 num_workers: 4

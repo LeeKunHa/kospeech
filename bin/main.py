@@ -18,9 +18,14 @@ import warnings
 import torch
 import torch.nn as nn
 import hydra
+import tensorflow as tf
 from hydra.core.config_store import ConfigStore
 from omegaconf import OmegaConf, DictConfig
+import gc
+import torch
 
+gc.collect()
+torch.cuda.empty_cache()
 from kospeech.data.data_loader import split_dataset
 from kospeech.optim import Optimizer
 from kospeech.model_builder import build_model
@@ -164,4 +169,6 @@ def main(config: DictConfig) -> None:
 
 
 if __name__ == '__main__':
+    #print("GPU를 사용한 학습")
+    #with tf.device("/device:GPU:0"):
     main()

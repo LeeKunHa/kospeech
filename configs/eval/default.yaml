@@ -4,7 +4,7 @@ dataset_path: ''
 transcripts_path: 'data/eval_transcript.txt'
 model_path: ''
 output_unit: 'character'
-batch_size: 32
+batch_size: 16
 num_workers: 4
 print_every: 20
 decode: 'greedy'

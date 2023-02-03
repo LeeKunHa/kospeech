@@ -1,0 +1,14 @@
+가상환경 활성화 : cd C:\virtualenv\virSTT\Scripts
+activate.bat
+
+
+전처리 코드 실행 : python main.py --dataset_path "C:\STT_dataset" --vocab_dest "C:\STT\kospeech-latest" --output_unit "character" --preprocess_mode "phonetic"
+
+cd C:\STT\kospeech-latest
+모델학습 코드 실행 : python ./bin/main.py model=ds2 train=ds2_train train.dataset_path="C:\STT_dataset"
+
+변환 코드 실행 : python ./bin/inference.py --model_path "C:\STT\kospeech-latest\outputs\2022-10-20\16-36-17\model.pt" --audio_path "C:\STT_dataset\KsponSpeech_eval\eval_clean\KsponSpeech_E00001.pcm" --device "cpu"
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+
+python ./bin/main.py model=conformer-small train=conformer_small_train train.dataset_path="C:\STT_dataset"
